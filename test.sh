@@ -54,8 +54,7 @@ function test1 {
 
 					for offset in ${OFFSET_ARR[*]}; do
 
-						test_size $sz sha256 sha256sum $chunk $offset
-						test_size $sz sha512 sha512sum $chunk $offset
+						test_size $sz sha1-avx2 sha1sum $chunk $offset
 					done
 				done
 			done

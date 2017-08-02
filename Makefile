@@ -2,6 +2,8 @@ obj-m += sha_hash_test.o
 
 PHONY: all
 
+all: test
+
 random:
 	dd if=/dev/urandom of=random bs=4096 count=4096
 

@@ -54,7 +54,6 @@ static struct public_key_signature *make_digest(
 	if (!pks)
 		goto error_no_pks;
 
-	pks->pkey_hash_algo     = -1;
 	pks->digest             = (u8 *)pks + sizeof(*pks) + desc_size;
 	pks->digest_size        = digest_size;
 
@@ -112,7 +111,7 @@ static int read_testfile(u8 **datap, size_t *datalenp)
 		goto out;
 	}
 
-	err = vfs_getattr(&filp->f_path, &stat);
+	err = vfs_getattr(&filp->f_path, &stat, STATX_BASIC_STATS, AT_STATX_SYNC_AS_STAT);
 	if (err)
 		goto free_file;
 
